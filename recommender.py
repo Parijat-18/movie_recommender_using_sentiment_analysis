@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import requests
 from tqdm import tqdm
+from sklearn.metrics.pairwise import cosine_similarity
 from imdb_scraper import headers , get_imdb_reviews , get_imdb_mov_rev_link , get_genres
 
 
@@ -62,8 +63,6 @@ def reviews_to_sent(rev_url , model , tokenized=True , tokenizer=None, return_te
   else:
     return None
 
-
-from sklearn.metrics.pairwise import cosine_similarity
 
 def get_mov_ranked(preprocessed_df , movie_name , model , tokenizer=None , return_tensors="tf" , mov_count=10):
   movies = preprocessed_df['title'].to_numpy()
